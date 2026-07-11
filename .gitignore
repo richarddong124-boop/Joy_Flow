@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+
+# Build output
+build/
+dist/
+*.spec.bak
+
+# Runtime files
+*.log
+controller_mouse_debug.log
+
+# Local Whisper models
+models/*.pt
+models/*.bin
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

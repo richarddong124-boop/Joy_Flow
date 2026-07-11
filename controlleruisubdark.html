@@ -1,0 +1,1145 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#7bd0ff",
+            "surface-container-high": "#252b2e",
+            "on-error": "#690005",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#0a0f12",
+            "secondary-fixed": "#d4e4fa",
+            "secondary": "#b9c8de",
+            "primary-container": "#38bdf8",
+            "secondary-fixed-dim": "#b9c8de",
+            "on-surface": "#dee3e8",
+            "on-secondary": "#233143",
+            "on-background": "#dee3e8",
+            "outline-variant": "#3e484f",
+            "surface-container-highest": "#303539",
+            "error-container": "#93000a",
+            "surface-container": "#1b2024",
+            "surface-variant": "#303539",
+            "on-surface-variant": "#bdc8d1",
+            "surface-dim": "#0f1418",
+            "background": "#0f1418",
+            "on-primary-container": "#004965",
+            "on-secondary-fixed": "#0d1c2d",
+            "primary": "#8ed5ff",
+            "tertiary-fixed-dim": "#ffb960",
+            "secondary-container": "#39485a",
+            "on-primary": "#00354a",
+            "on-secondary-container": "#a7b6cc",
+            "inverse-primary": "#00668a",
+            "on-tertiary-container": "#613b00",
+            "on-secondary-fixed-variant": "#39485a",
+            "outline": "#87929a",
+            "tertiary": "#ffc176",
+            "on-tertiary-fixed": "#2a1700",
+            "surface-container-low": "#171c20",
+            "inverse-surface": "#dee3e8",
+            "inverse-on-surface": "#2c3135",
+            "tertiary-container": "#f1a02b",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#653e00",
+            "on-primary-fixed": "#001e2c",
+            "surface-bright": "#343a3e",
+            "primary-fixed-dim": "#7bd0ff",
+            "on-primary-fixed-variant": "#004c69",
+            "tertiary-fixed": "#ffddb8",
+            "on-tertiary": "#472a00",
+            "surface": "#0f1418",
+            "primary-fixed": "#c4e7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Geist"],
+            "body-md": ["Geist"],
+            "headline-xl": ["Geist"],
+            "headline-lg": ["Geist"],
+            "label-mono": ["JetBrains Mono"],
+            "headline-lg-mobile": ["Geist"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-screen flex flex-col bg-background font-body-md overflow-hidden text-on-background" style="width: 1280px; height: 960px; min-width: 1280px; min-height: 960px; max-width: 1280px; max-height: 960px; margin: 0px auto; position: relative; overflow: hidden; border: 1px solid rgb(48, 53, 57); box-shadow: rgba(0, 0, 0, 0.5) 0px 25px 50px -12px; padding: 0px;">
+<!-- BEGIN: CustomNativeTitlebar-->
+<div class="app-titlebar pywebview-drag-region bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-4 py-2 select-none" data-purpose="custom-titlebar">
+<div class="app-titlebar-left flex items-center gap-3">
+<div aria-hidden="true" class="app-titlebar-icon text-lg">🎮</div>
+<div class="app-titlebar-title text-sm font-bold text-on-surface tracking-tight" data-i18n="app-title">Joy Flow</div>
+</div>
+<div aria-label="Window Controls" class="app-window-controls flex items-center gap-2">
+<button aria-label="Minimize" class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant text-on-surface transition-colors rounded" onclick="windowAction('minimize')" title="Minimize" type="button">−</button>
+<button aria-label="Close" class="w-8 h-8 flex items-center justify-center hover:bg-error/20 hover:text-error text-on-surface transition-colors rounded" onclick="windowAction('close')" title="Close" type="button">×</button>
+</div>
+</div>
+<!-- END: CustomNativeTitlebar -->
+<div class="flex-1 flex flex-col items-center justify-center p-6 overflow-hidden">
+<div class="max-w-4xl w-full flex flex-col items-center opacity-100 visible">
+<!-- BEGIN: Illustration Section -->
+<div class="flex items-center justify-center space-x-8 mb-6" data-purpose="hardware-icons">
+<div class="flex items-center justify-center space-x-6 opacity-90 header-emoji-container" id="header-icon-container">
+<span aria-label="Controller" class="text-7xl transition-transform hover:scale-105 drop-shadow-lg" role="img">🎮</span>
+<span aria-label="Mouse" class="text-5xl transition-transform hover:scale-105 drop-shadow-lg" role="img">🖱️</span>
+<span aria-label="Microphone" class="text-5xl transition-transform hover:scale-105 drop-shadow-lg" role="img">🎙️</span>
+</div>
+</div>
+<div class="mb-6 flex items-center justify-center bg-surface-container-highest/20 backdrop-blur-md border border-outline-variant/30 px-5 py-2 rounded-full shadow-lg" data-purpose="running-status">
+<div class="w-2.5 h-2.5 bg-emerald-400 rounded-full mr-2.5 animate-pulse shadow-[0_0_12px_rgba(52,211,153,0.6)]" id="status-dot"></div>
+<span class="text-on-surface-variant text-[11px] font-bold tracking-widest uppercase" data-i18n="status-running" id="status-text">Running</span>
+</div>
+<!-- END: TopIllustrationSection -->
+<!-- BEGIN: MainDashboardPanel -->
+<main class="bg-surface-container-low/60 backdrop-blur-xl border border-outline-variant/40 rounded-[32px] p-8 w-full max-w-3xl shadow-2xl flex flex-col gap-8 visible opacity-100" data-purpose="dashboard-container">
+<!-- Dashboard Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-primary/10 flex items-center justify-center mr-5 rounded-xl border border-primary/20">
+<svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+<path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-xl font-bold text-on-surface tracking-tight" data-i18n="dashboard-title">Controller Dashboard</h1>
+<p class="text-on-surface-variant text-xs font-medium mt-1" data-i18n="dashboard-subtitle">Control cursor, dictation, and Enter from your controller.</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="flex items-center justify-center gap-2 w-24 h-8 bg-surface-container-high border border-outline-variant/40 rounded-lg hover:border-primary/50 transition-all shadow-sm active:scale-95 group" id="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+<span class="material-symbols-outlined text-sm text-on-surface group-hover:rotate-12" id="theme-icon">dark_mode</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface" id="theme-label">Night</span>
+</button>
+<button class="flex items-center justify-center w-24 h-8 bg-surface-container-high border border-outline-variant/40 rounded-lg hover:border-primary/50 transition-all shadow-sm active:scale-95" id="lang-toggle" onclick="toggleLanguage()">
+<span class="text-[10px] font-bold text-on-surface tracking-wider">EN | 中文</span>
+</button>
+</div>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Left Column: Shortcuts -->
+<section data-purpose="shortcuts-column">
+<div class="flex flex-col mb-4">
+<div class="flex items-center">
+<div class="w-7 h-7 bg-secondary/20 rounded-lg flex items-center justify-center mr-3 border border-secondary/20">
+<svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="shortcuts-title">Controller Shortcuts</h2>
+</div>
+<p class="text-[10px] text-on-surface-variant/80 mt-1 ml-10" data-i18n="shortcuts-subtitle">Useful actions and quick toggles.</p>
+</div>
+<div class="space-y-2.5">
+<div class="flex items-center justify-between bg-surface-container-highest/20 border border-outline-variant/30 rounded-xl p-2.5 px-3.5 hover:bg-surface-container-highest/40 transition-colors">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant rounded-md text-[9px] font-bold text-on-surface">LB</span>
+<span class="text-outline font-bold text-base">+</span>
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant rounded-md text-[9px] font-bold text-on-surface w-7 text-center">A</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-sens-up">Sensitivity Up</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-highest/20 border border-outline-variant/30 rounded-xl p-2.5 px-3.5 hover:bg-surface-container-highest/40 transition-colors">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant rounded-md text-[9px] font-bold text-on-surface">LB</span>
+<span class="text-outline font-bold text-base">+</span>
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant rounded-md text-[9px] font-bold text-on-surface w-7 text-center">B</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-sens-down">Sensitivity Down</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-highest/20 border border-outline-variant/30 rounded-xl p-2.5 px-3.5 hover:bg-surface-container-highest/40 transition-colors">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant rounded-md text-[9px] font-bold text-on-surface w-9 text-center">LT</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-dictate">Hold to Dictate</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-highest/20 border border-outline-variant/30 rounded-xl p-2.5 px-3.5 hover:bg-surface-container-highest/40 transition-colors">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant rounded-md text-[9px] font-bold text-on-surface w-9 text-center">RT</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-enter">Enter Key</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Movement & Precision -->
+<section class="flex flex-col gap-6" data-purpose="movement-column">
+<div>
+<div class="flex flex-col mb-4">
+<div class="flex items-center">
+<div class="w-7 h-7 bg-primary/20 rounded-lg flex items-center justify-center mr-3 border border-primary/20">
+<div class="w-3.5 h-3.5 border-2 border-primary rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="movement-title">Movement</h2>
+</div>
+<p class="text-[10px] text-on-surface-variant/80 mt-1 ml-10" data-i18n="movement-subtitle">Move the cursor smoothly.</p>
+</div>
+<div class="flex items-center bg-surface-container border border-outline-variant/30 rounded-2xl p-4 hover:border-primary/40 transition-colors">
+<div class="w-10 h-10 bg-surface-variant/40 rounded-xl flex items-center justify-center mr-4">
+<svg class="w-6 h-6 text-on-surface-variant" fill="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="8" r="4"></circle>
+<path d="M12 12c-3.3 0-6 2.7-6 6v2h12v-2c0-3.3-2.7-6-6-6z" opacity="0.4"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-xs text-on-surface" data-i18n="movement-input">Left Stick</p>
+<p class="text-[9px] text-on-surface-variant/90 uppercase tracking-wider font-bold mt-0.5" data-i18n="movement-action">= Move Cursor</p>
+</div>
+</div>
+</div>
+<div>
+<div class="flex flex-col mb-4">
+<div class="flex items-center">
+<div class="w-7 h-7 bg-primary/20 rounded-lg flex items-center justify-center mr-3 border border-primary/20">
+<div class="w-3.5 h-3.5 border-2 border-primary rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="precision-title">Precision</h2>
+</div>
+<p class="text-[10px] text-on-surface-variant/80 mt-1 ml-10" data-i18n="precision-subtitle">Fine control for accuracy.</p>
+</div>
+<div class="flex items-center bg-surface-container border border-outline-variant/30 rounded-2xl p-4 hover:border-primary/40 transition-colors">
+<div class="w-10 h-10 bg-surface-variant/40 rounded-xl flex items-center justify-center mr-4">
+<svg class="w-6 h-6 text-on-surface-variant" fill="currentColor" viewBox="0 0 24 24"><path d="M10 3v7H3v4h7v7h4v-7h7v-4h-7V3h-4z"></path></svg>
+</div>
+<div>
+<p class="font-bold text-xs text-on-surface" data-i18n="precision-input">D-pad</p>
+<p class="text-[9px] text-on-surface-variant/90 uppercase tracking-wider font-bold mt-0.5" data-i18n="precision-action">= Fine Adjust</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Speech Mode Panel -->
+<section class="bg-surface-container border border-outline-variant/30 rounded-2xl p-4" data-purpose="speech-mode-panel">
+<div class="flex items-center justify-between gap-4 mb-3">
+<div class="flex items-center">
+<div class="w-9 h-9 bg-tertiary/20 rounded-xl flex items-center justify-center mr-4 border border-tertiary/20">
+<span aria-hidden="true" class="text-lg">🎙️</span>
+</div>
+<div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="speech-mode-title">Speech Mode</h2>
+<p class="text-[10px] text-on-surface-variant font-medium mt-0.5" id="speech-mode-current">Speech mode unavailable</p>
+</div>
+</div>
+<div class="text-[9px] text-on-surface-variant/70 text-right font-bold tracking-tight">
+              LT Hold = Voice • RT = Enter
+            </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2" data-purpose="speech-mode-buttons">
+<button class="speech-mode-btn bg-surface-container-high border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:text-on-surface hover:border-primary transition-all shadow-sm" data-speech-mode="zh-small">Stable Chinese Input</button>
+<button class="speech-mode-btn bg-surface-container-high border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:text-on-surface hover:border-primary transition-all shadow-sm" data-speech-mode="en-small">Stable English Input</button>
+<button class="speech-mode-btn bg-surface-container-high border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:text-on-surface hover:border-primary transition-all shadow-sm" data-speech-mode="zh-tiny">Lightning CN Input</button>
+<button class="speech-mode-btn bg-surface-container-high border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:text-on-surface hover:border-primary transition-all shadow-sm" data-speech-mode="auto-tiny">Auto Lightning Input</button>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="grid grid-cols-3 gap-4" data-purpose="action-buttons">
+<button class="action-btn flex items-center justify-center space-x-3 bg-primary/10 border border-primary/20 p-4 rounded-xl hover:bg-primary/20 transition-all group shadow-sm active:scale-95" data-action="start" onclick="send('start')">
+<div class="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-primary border-b-[6px] border-b-transparent ml-1 group-hover:scale-110 transition-transform"></div>
+<span class="text-sm font-bold text-on-surface tracking-tight" data-i18n="btn-start">Start</span>
+</button>
+<button class="action-btn flex items-center justify-center space-x-3 bg-secondary/10 border border-secondary/20 p-4 rounded-xl hover:bg-secondary/20 transition-all group shadow-sm active:scale-95" data-action="pause" onclick="send('pause')">
+<div class="flex space-x-1">
+<div class="w-1.5 h-3.5 bg-secondary rounded-full"></div>
+<div class="w-1.5 h-3.5 bg-secondary rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-on-surface tracking-tight" data-i18n="btn-pause">Pause</span>
+</button>
+<button class="action-btn flex items-center justify-center space-x-3 bg-error/10 border border-error/20 p-4 rounded-xl hover:bg-error/20 transition-all group shadow-sm active:scale-95" data-action="stop" onclick="send('stop')">
+<div class="w-3 h-3 bg-error rounded-sm group-hover:scale-110 transition-transform"></div>
+<span class="text-sm font-bold text-on-surface tracking-tight" data-i18n="btn-stop">Stop</span>
+</button>
+</div>
+</main>
+</div>
+</div>
+<script>
+    let currentLang = 'en';
+    const translations = {
+      'en': {
+        'app-title': 'Joy Flow',
+        'status-running': 'Running',
+        'status-paused': 'Paused',
+        'status-stopped': 'Stopped',
+        'dashboard-title': 'Controller Dashboard',
+        'dashboard-subtitle': 'Control cursor, dictation, and Enter from your controller.',
+        'shortcuts-title': 'Controller Shortcuts',
+        'shortcuts-subtitle': 'Useful actions and quick toggles.',
+        'shortcut-sens-up': 'Sensitivity Up',
+        'shortcut-sens-down': 'Sensitivity Down',
+        'shortcut-dictate': 'Hold to Dictate',
+        'shortcut-enter': 'Enter Key',
+        'movement-title': 'Movement',
+        'movement-subtitle': 'Move the cursor smoothly.',
+        'movement-input': 'Left Stick',
+        'movement-action': '= Move Cursor',
+        'precision-title': 'Precision',
+        'precision-subtitle': 'Fine control for accuracy.',
+        'precision-input': 'D-pad',
+        'precision-action': '= Fine Adjust',
+        'speech-mode-title': 'Speech Mode',
+        'speech-mode-unavailable': 'Speech mode unavailable',
+    'speech-mode-tip': '',
+        'btn-start': 'Start',
+        'btn-pause': 'Pause',
+        'btn-stop': 'Stop',
+        'lang-current': 'Current: ',
+        'theme-day': 'Day',
+        'theme-night': 'Night'
+      },
+      'zh': {
+        'app-title': '控制器鼠标',
+        'status-running': '运行中',
+        'status-paused': '已暂停',
+        'status-stopped': '已停止',
+        'dashboard-title': '控制器仪表板',
+        'dashboard-subtitle': '从控制器控制光标、听写和回车。',
+        'shortcuts-title': '控制器快捷键',
+        'shortcuts-subtitle': '常用操作和快速切换。',
+        'shortcut-sens-up': '提高灵敏度',
+        'shortcut-sens-down': '降低灵敏度',
+        'shortcut-dictate': '按住听写',
+        'shortcut-enter': '回车键',
+        'movement-title': '移动',
+        'movement-subtitle': '平滑移动光标。',
+        'movement-input': '左摇杆',
+        'movement-action': '= 移动光标',
+        'precision-title': '精度',
+        'precision-subtitle': '精确微调。',
+        'precision-input': '方向键',
+        'precision-action': '= 精确调整',
+        'speech-mode-title': '语音模式',
+        'speech-mode-unavailable': '语音模式不可用',
+        'speech-mode-tip': '选择模式。Small 更好，Tiny 更快。',
+        'btn-start': '开始',
+        'btn-pause': '暂停',
+        'btn-stop': '停止',
+        'lang-current': '当前：',
+        'theme-day': '白天',
+        'theme-night': '夜晚'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'zh' : 'en';
+      applyTranslations();
+    }
+
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerText = translations[currentLang][key];
+        }
+      });
+      updateThemeLabel();
+      refreshSpeechMode();
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.innerText = 'light_mode';
+      } else {
+        html.classList.add('dark');
+        icon.innerText = 'dark_mode';
+      }
+      updateThemeLabel();
+    }
+
+    function updateThemeLabel() {
+      const label = document.getElementById('theme-label');
+      const isDark = document.documentElement.classList.contains('dark');
+      label.innerText = isDark ? translations[currentLang]['theme-night'] : translations[currentLang]['theme-day'];
+    }
+
+    async function windowAction(action) {
+      try {
+        if (window.pywebview && window.pywebview.api && window.pywebview.api[action]) {
+          await window.pywebview.api[action]();
+        }
+      } catch (e) { console.log(e); }
+    }
+
+    async function send(action) {
+      try {
+        await fetch(`/${action}`, { method: "POST" });
+      } catch (e) { console.log(e); }
+
+      const statusLabel = document.getElementById('status-text');
+      const statusDot = document.getElementById('status-dot');
+      const iconContainer = document.getElementById('header-icon-container');
+      
+      if (statusLabel && statusDot) {
+        statusDot.className = "w-2.5 h-2.5 rounded-full mr-2.5 animate-pulse transition-all duration-300";
+        if (action === "start") {
+          statusLabel.innerText = translations[currentLang]['status-running'];
+          statusDot.classList.add("bg-emerald-400", "shadow-[0_0_12px_rgba(52,211,153,0.6)]");
+          if (iconContainer) iconContainer.classList.remove('is-paused');
+        } else if (action === "pause") {
+          statusLabel.innerText = translations[currentLang]['status-paused'];
+          statusDot.classList.add("bg-orange-400", "shadow-[0_0_12px_rgba(251,146,60,0.6)]");
+          if (iconContainer) iconContainer.classList.add('is-paused');
+        } else if (action === "stop") {
+          statusLabel.innerText = translations[currentLang]['status-stopped'];
+          statusDot.classList.add("bg-red-400", "shadow-[0_0_12px_rgba(248,113,113,0.6)]");
+          if (iconContainer) iconContainer.classList.remove('is-paused');
+        }
+      }
+    }
+
+    async function refreshSpeechMode() {
+      try {
+        const response = await fetch("/speech-mode");
+        const data = await response.json();
+        const current = data.current || "custom";
+        const profile = (data.profiles || []).find((item) => item.id === current);
+        const label = profile ? profile.label : `Custom`;
+        const currentEl = document.getElementById("speech-mode-current");
+        if (currentEl) {
+          const prefix = translations[currentLang]['lang-current'];
+          currentEl.innerText = `${prefix}${label}`;
+        }
+      } catch (e) {
+        const currentEl = document.getElementById("speech-mode-current");
+        if (currentEl) currentEl.innerText = translations[currentLang]['speech-mode-unavailable'];
+      }
+    }
+
+    async function setSpeechMode(mode) {
+      try {
+        await fetch("/set-speech-mode", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mode }),
+        });
+        await refreshSpeechMode();
+      } catch (e) { console.log(e); }
+    }
+
+    document.querySelectorAll("[data-speech-mode]").forEach(btn => {
+      btn.onclick = () => setSpeechMode(btn.getAttribute("data-speech-mode"));
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Force start in dark mode as requested
+      document.documentElement.classList.add('dark');
+      updateThemeLabel();
+      refreshSpeechMode();
+    });
+  </script>
+
+
+
+<script data-purpose="controller-mouse-backend-speech-wiring-v20260703">
+(function () {
+  "use strict";
+
+  const stateStyle = document.createElement("style");
+  stateStyle.textContent = `
+    [data-speech-mode][data-active="true"] {
+      border-color: rgb(96 165 250 / 0.78) !important;
+      box-shadow: 0 0 0 2px rgb(96 165 250 / 0.22);
+      background: rgb(59 130 246 / 0.14) !important;
+      color: rgb(241 245 249) !important;
+    }
+    [data-speech-mode][data-loading="true"] {
+      border-color: rgb(251 191 36 / 0.8) !important;
+      background: rgb(245 158 11 / 0.16) !important;
+    }
+    [data-action][data-active="true"] {
+      box-shadow: 0 0 0 2px rgb(52 211 153 / 0.25);
+      transform: translateY(-1px);
+    }
+    [data-soft-focus="true"] {
+      box-shadow: 0 0 0 2px rgb(129 140 248 / 0.36) !important;
+    }
+  `;
+  document.head.appendChild(stateStyle);
+
+  const MODE_BY_LABEL = new Map([
+    ["stable chinese input", "zh-small"],
+    ["stable english input", "en-small"],
+    ["lightning cn input", "zh-tiny"],
+    ["auto lightning input", "auto-tiny"],
+    ["中文输入 (稳)", "zh-small"],
+    ["中文输入（稳）", "zh-small"],
+    ["稳定中文输入", "zh-small"],
+    ["稳定中文", "zh-small"],
+    ["英文输入 (稳)", "en-small"],
+    ["英文输入（稳）", "en-small"],
+    ["稳定英文输入", "en-small"],
+    ["中文输入 (快)", "zh-tiny"],
+    ["中文输入（快）", "zh-tiny"],
+    ["闪电中文输入", "zh-tiny"],
+    ["自动识别 (快)", "auto-tiny"],
+    ["自动识别（快）", "auto-tiny"],
+    ["自动闪电输入", "auto-tiny"]
+  ]);
+
+  const PROFILE_LABELS = {
+    "zh-small": { en: "Stable Chinese Input", zh: "中文输入 (稳)", model: "small", language: "zh" },
+    "en-small": { en: "Stable English Input", zh: "英文输入 (稳)", model: "small", language: "en" },
+    "zh-tiny": { en: "Lightning CN Input", zh: "中文输入 (快)", model: "tiny", language: "zh" },
+    "auto-tiny": { en: "Auto Lightning Input", zh: "自动识别 (快)", model: "tiny", language: null }
+  };
+
+  function pageLang() {
+    const htmlLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    if (window.__controllerMouseLang) return window.__controllerMouseLang;
+    return htmlLang.includes("zh") ? "zh" : "en";
+  }
+
+  function normalizeLabel(text) {
+    return String(text || "").replace(/\s+/g, " ").trim().toLowerCase();
+  }
+
+  function inferMode(button, index) {
+    const existing = button.getAttribute("data-speech-mode");
+    if (existing && PROFILE_LABELS[existing]) return existing;
+
+    const direct = MODE_BY_LABEL.get(normalizeLabel(button.innerText));
+    if (direct) return direct;
+
+    return ["zh-small", "en-small", "zh-tiny", "auto-tiny"][index] || "zh-small";
+  }
+
+  function speechButtons() {
+    return Array.from(document.querySelectorAll("[data-purpose='speech-mode-buttons'] button, .speech-mode-btn, [data-speech-mode]"));
+  }
+
+  function markSpeechMode(current) {
+    speechButtons().forEach((button) => {
+      const mode = button.getAttribute("data-speech-mode");
+      const active = mode === current;
+      button.setAttribute("data-active", active ? "true" : "false");
+    });
+  }
+
+  async function postJSON(url, body) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body || {})
+    });
+    if (!response.ok) throw new Error(`${url} failed: ${response.status}`);
+    const text = await response.text();
+    try { return JSON.parse(text); } catch (_) { return { ok: true, text }; }
+  }
+
+  let speechModePending = null;
+
+  function isSmallSpeechMode(mode) {
+    return mode === "zh-small" || mode === "en-small";
+  }
+
+  function speechLoadingText(lang) {
+    return lang === "zh" ? "加载中..." : "Loading...";
+  }
+
+  function speechSwitchFailedText(lang) {
+    return lang === "zh" ? "语音模式切换失败" : "Speech mode switch failed";
+  }
+
+  function renderSpeechButtonLoading(targetMode, loading) {
+    const lang = pageLang();
+    speechButtons().forEach((button) => {
+      const mode = button.getAttribute("data-speech-mode");
+      if (!button.dataset.baseLabel) {
+        button.dataset.baseLabel = button.textContent.trim();
+      }
+      button.textContent = button.dataset.baseLabel;
+      button.setAttribute("data-loading", "false");
+      if (loading) {
+        if (mode === targetMode) {
+          button.setAttribute("data-loading", "true");
+          button.textContent = `${button.dataset.baseLabel} ${speechLoadingText(lang)}`;
+        }
+      }
+    });
+  }
+
+  async function waitForSpeechModeReady(targetMode) {
+    for (let attempt = 0; attempt < 45; attempt += 1) {
+      const data = await window.refreshSpeechMode();
+      const loading = data && data.loading;
+      if (!loading || !loading.active || loading.target !== targetMode) {
+        return data;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    }
+    throw new Error("Speech mode loading timed out");
+  }
+
+  window.refreshSpeechMode = async function refreshSpeechMode() {
+    const currentEl = document.getElementById("speech-mode-current");
+    try {
+      const response = await fetch("/speech-mode", { cache: "no-store" });
+      if (!response.ok) throw new Error(`/speech-mode failed: ${response.status}`);
+      const data = await response.json();
+      const current = data.current || data.mode || "custom";
+      const lang = pageLang();
+      const local = PROFILE_LABELS[current] ? PROFILE_LABELS[current][lang] : null;
+      const serverProfile = (data.profiles || []).find((item) => item.id === current);
+      const label = local || (serverProfile && serverProfile.label) || current;
+      const prefix = lang === "zh" ? "当前：" : "Current: ";
+      if (currentEl) currentEl.innerText = `${prefix}${label}`;
+      markSpeechMode(current);
+      return data;
+    } catch (e) {
+      if (currentEl) currentEl.innerText = pageLang() === "zh" ? "语音模式不可用" : "Speech mode unavailable";
+      console.log("Speech mode refresh failed:", e);
+      return null;
+    }
+  };
+
+  window.setSpeechMode = async function setSpeechMode(mode) {
+    const button = document.querySelector(`[data-speech-mode='${mode}']`);
+    try {
+      if (button) button.disabled = true;
+      const data = await postJSON("/set-speech-mode", { mode });
+      markSpeechMode(mode);
+      await window.refreshSpeechMode();
+      return data;
+    } catch (e) {
+      console.log("Set speech mode failed:", e);
+      const currentEl = document.getElementById("speech-mode-current");
+      if (currentEl) currentEl.innerText = pageLang() === "zh" ? "语音模式切换失败" : "Speech mode switch failed";
+      return null;
+    } finally {
+      if (button) button.disabled = false;
+    }
+  };
+
+  window.refreshSpeechMode = async function refreshSpeechMode() {
+    const currentEl = document.getElementById("speech-mode-current");
+    try {
+      const response = await fetch("/speech-mode", { cache: "no-store" });
+      if (!response.ok) throw new Error(`/speech-mode failed: ${response.status}`);
+      const data = await response.json();
+      const current = data.current || data.mode || "custom";
+      const lang = pageLang();
+      const local = PROFILE_LABELS[current] ? PROFILE_LABELS[current][lang] : null;
+      const serverProfile = (data.profiles || []).find((item) => item.id === current);
+      const label = local || (serverProfile && serverProfile.label) || current;
+      const loading = data.loading || {};
+      if (currentEl) {
+        currentEl.innerText = loading.active && loading.target === current
+          ? `${lang === "zh" ? "当前：" : "Current: "}${label} · ${speechLoadingText(lang)}`
+          : `${lang === "zh" ? "当前：" : "Current: "}${label}`;
+      }
+      speechModePending = loading.active ? loading.target : null;
+      renderSpeechButtonLoading(speechModePending, Boolean(loading.active));
+      markSpeechMode(current);
+      return data;
+    } catch (e) {
+      speechModePending = null;
+      renderSpeechButtonLoading(null, false);
+      if (currentEl) currentEl.innerText = pageLang() === "zh" ? "语音模式不可用" : "Speech mode unavailable";
+      console.log("Speech mode refresh failed:", e);
+      return null;
+    }
+  };
+
+  window.setSpeechMode = async function setSpeechMode(mode) {
+    const button = document.querySelector(`[data-speech-mode='${mode}']`);
+    const lang = pageLang();
+    const currentEl = document.getElementById("speech-mode-current");
+    try {
+      if (isSmallSpeechMode(mode)) {
+        speechModePending = mode;
+        renderSpeechButtonLoading(mode, true);
+        const local = PROFILE_LABELS[mode] ? PROFILE_LABELS[mode][lang] : mode;
+        if (currentEl) currentEl.innerText = `${lang === "zh" ? "当前：" : "Current: "}${local} · ${speechLoadingText(lang)}`;
+      } else if (button) {
+        button.disabled = true;
+      }
+
+      const data = await postJSON("/set-speech-mode", { mode });
+      if (data && data.loading && data.loading.active && data.loading.target === mode) {
+        return await waitForSpeechModeReady(mode);
+      }
+      markSpeechMode(mode);
+      return await window.refreshSpeechMode();
+    } catch (e) {
+      speechModePending = null;
+      renderSpeechButtonLoading(null, false);
+      console.log("Set speech mode failed:", e);
+      if (currentEl) currentEl.innerText = speechSwitchFailedText(lang);
+      return null;
+    } finally {
+      if (!speechModePending) {
+        renderSpeechButtonLoading(null, false);
+      }
+    }
+  };
+
+  function applyStatusState(action) {
+    const statusDot = document.getElementById("status-dot");
+    const iconContainer = document.getElementById("header-icon-container");
+    if (statusDot) {
+      statusDot.className = "w-2.5 h-2.5 rounded-full mr-2.5 animate-pulse transition-all duration-300";
+      if (action === "pause") {
+        statusDot.classList.add("bg-orange-400", "shadow-[0_0_12px_rgba(251,146,60,0.6)]");
+      } else if (action === "stop") {
+        statusDot.classList.add("bg-red-400", "shadow-[0_0_12px_rgba(248,113,113,0.6)]");
+      } else {
+        statusDot.classList.add("bg-emerald-400", "shadow-[0_0_12px_rgba(52,211,153,0.6)]");
+      }
+    }
+    if (iconContainer) iconContainer.classList.toggle("is-paused", action === "pause");
+  }
+
+  window.send = window.send || async function send(action) {
+    try { await fetch(`/${action}`, { method: "POST" }); } catch (e) { console.log(e); }
+    const lang = pageLang();
+    const labels = lang === "zh"
+      ? { start: "运行中", pause: "已暂停", stop: "已停止" }
+      : { start: "Running", pause: "Paused", stop: "Stopped" };
+    const statusLabel = document.getElementById("status-text");
+    if (statusLabel && labels[action]) statusLabel.innerText = labels[action];
+    applyStatusState(action);
+    markActionButton(action);
+  };
+
+  function actionButtons() {
+    return Array.from(document.querySelectorAll("[data-purpose='action-buttons'] .action-btn, [data-action]"));
+  }
+
+  function markActionButton(current) {
+    actionButtons().forEach((button) => {
+      const action = button.getAttribute("data-action");
+      const active = action === current;
+      button.setAttribute("data-active", active ? "true" : "false");
+    });
+  }
+
+  window.windowAction = window.windowAction || async function windowAction(action) {
+    try {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api[action]) {
+        await window.pywebview.api[action]();
+      }
+    } catch (e) { console.log(e); }
+  };
+
+  window.toggleTheme = window.toggleTheme || function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+    const icon = document.getElementById("theme-icon");
+    if (icon) icon.innerText = document.documentElement.classList.contains("dark") ? "dark_mode" : "light_mode";
+  };
+
+  window.toggleLanguage = window.toggleLanguage || function toggleLanguage() {
+    window.__controllerMouseLang = pageLang() === "zh" ? "en" : "zh";
+    window.refreshSpeechMode();
+  };
+
+  function installSpeechWiring() {
+    const buttons = speechButtons();
+    buttons.forEach((button, index) => {
+      const mode = inferMode(button, index);
+      const targetMode = button.getAttribute("data-speech-target") || mode;
+      button.setAttribute("data-speech-mode", mode);
+      button.type = "button";
+      button.onclick = function () { window.setSpeechMode(targetMode); };
+    });
+    applyStatusState("start");
+    markActionButton("start");
+    window.refreshSpeechMode();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installSpeechWiring);
+  } else {
+    installSpeechWiring();
+  }
+})();
+</script>
+
+<script src="/assets/controller_overlay.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  const style = document.createElement("style");
+  style.textContent = `
+    body.soft-nav-active,
+    body.soft-nav-active * {
+      cursor: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const state = {
+    active: false,
+    inputMode: "mouse",
+    root: null,
+    buttons: [],
+    focused: null,
+    virtualX: 0,
+    virtualY: 0,
+    accumX: 0,
+    accumY: 0,
+    activating: false,
+  };
+
+  function rootElement() {
+    return document.body;
+  }
+
+  function buttonList(root) {
+    return Array.from(root.querySelectorAll("button")).filter((button) => (
+      button.offsetParent !== null
+      && !button.disabled
+      && button.getAttribute("aria-hidden") !== "true"
+    ));
+  }
+
+  function buttonCenter(button) {
+    const rect = button.getBoundingClientRect();
+    return {
+      x: rect.left + (rect.width / 2),
+      y: rect.top + (rect.height / 2),
+    };
+  }
+
+  function setFocusedButton(button) {
+    state.buttons.forEach((candidate) => {
+      const active = candidate === button;
+      candidate.setAttribute("data-soft-focus", active ? "true" : "false");
+    });
+    state.focused = button || null;
+    if (state.focused) {
+      try {
+        state.focused.focus({ preventScroll: true });
+      } catch (_e) {
+        state.focused.focus();
+      }
+    }
+  }
+
+  function nearestButtonFromPoint(x, y) {
+    let best = null;
+    let bestDistance = Infinity;
+    state.buttons.forEach((button) => {
+      const center = buttonCenter(button);
+      const dx = center.x - x;
+      const dy = center.y - y;
+      const distance = Math.hypot(dx, dy);
+      if (distance < bestDistance) {
+        best = button;
+        bestDistance = distance;
+      }
+    });
+    return best;
+  }
+
+  function currentOrigin() {
+    if (state.focused) return buttonCenter(state.focused);
+    if (state.root) {
+      const rect = state.root.getBoundingClientRect();
+      return { x: rect.left + state.virtualX, y: rect.top + state.virtualY };
+    }
+    return { x: 0, y: 0 };
+  }
+
+  function moveFocusByDirection(dx, dy) {
+    if (!state.buttons.length) return;
+    const origin = currentOrigin();
+    const axis = Math.abs(dx) >= Math.abs(dy) ? "x" : "y";
+    const directionX = axis === "x" ? Math.sign(dx || 0) : 0;
+    const directionY = axis === "y" ? Math.sign(dy || 0) : 0;
+    if (!directionX && !directionY) return;
+
+    let best = null;
+    let bestScore = Infinity;
+
+    state.buttons.forEach((button) => {
+      if (button === state.focused) return;
+      const center = buttonCenter(button);
+      const offsetX = center.x - origin.x;
+      const offsetY = center.y - origin.y;
+      const forward = (offsetX * directionX) + (offsetY * directionY);
+      if (forward <= 0) return;
+      const offAxis = axis === "x" ? Math.abs(offsetY) : Math.abs(offsetX);
+      const score = forward + (offAxis * 2.25);
+      if (score < bestScore) {
+        best = button;
+        bestScore = score;
+      }
+    });
+
+    if (!best) {
+      const rect = state.root.getBoundingClientRect();
+      best = nearestButtonFromPoint(rect.left + state.virtualX, rect.top + state.virtualY);
+    }
+    if (best) setFocusedButton(best);
+  }
+
+  function activateFocusedButton() {
+    if (!state.active || !state.focused || state.focused.disabled) return;
+    state.activating = true;
+    try {
+      state.focused.click();
+    } finally {
+      window.setTimeout(() => {
+        state.activating = false;
+      }, 0);
+    }
+  }
+
+  function releaseSoftNav() {
+    if (!state.active) return;
+    state.active = false;
+    state.accumX = 0;
+    state.accumY = 0;
+    document.body.classList.remove("soft-nav-active");
+    if (state.root) state.root.removeAttribute("data-soft-nav-active");
+    setFocusedButton(null);
+  }
+
+  function enableMouseMode() {
+    state.inputMode = "mouse";
+    releaseSoftNav();
+  }
+
+  function startSoftNavAtPoint(clientX, clientY) {
+    const root = rootElement();
+    if (!root) return;
+    const rect = root.getBoundingClientRect();
+    const inside = clientX >= rect.left && clientX <= rect.right
+      && clientY >= rect.top && clientY <= rect.bottom;
+    if (!inside) {
+      releaseSoftNav();
+      return;
+    }
+
+    state.root = root;
+    state.buttons = buttonList(root);
+    if (!state.buttons.length) return;
+
+    state.active = true;
+    state.virtualX = clientX - rect.left;
+    state.virtualY = clientY - rect.top;
+    state.accumX = 0;
+    state.accumY = 0;
+    document.body.classList.add("soft-nav-active");
+    root.setAttribute("data-soft-nav-active", "true");
+    setFocusedButton(nearestButtonFromPoint(clientX, clientY));
+  }
+
+  function ensureSoftNav() {
+    const root = rootElement();
+    if (!root) return;
+    if (!state.active) {
+      const rect = root.getBoundingClientRect();
+      const origin = state.focused ? buttonCenter(state.focused) : {
+        x: rect.left + (rect.width / 2),
+        y: rect.top + (rect.height / 2),
+      };
+      startSoftNavAtPoint(origin.x, origin.y);
+    }
+  }
+
+  function handleMouseMove() {
+    enableMouseMode();
+  }
+
+  function moveVirtualFocus(dx, dy) {
+    const root = rootElement();
+    if (!root) return;
+    ensureSoftNav();
+    if (!state.active) return;
+    if (root !== state.root) {
+      releaseSoftNav();
+      ensureSoftNav();
+      if (!state.active) return;
+    }
+
+    const rect = root.getBoundingClientRect();
+    state.virtualX = Math.max(0, Math.min(rect.width, state.virtualX + dx));
+    state.virtualY = Math.max(0, Math.min(rect.height, state.virtualY + dy));
+
+    state.accumX += dx;
+    state.accumY += dy;
+    if (Math.hypot(state.accumX, state.accumY) >= 26) {
+      moveFocusByDirection(state.accumX, state.accumY);
+      state.accumX = 0;
+      state.accumY = 0;
+    }
+  }
+
+  function installSoftNav() {
+    const root = rootElement();
+    if (!root) return;
+    root.addEventListener("mouseenter", handleMouseMove);
+    root.addEventListener("mousemove", handleMouseMove);
+    root.addEventListener("mousedown", enableMouseMode, true);
+    root.addEventListener("click", () => {
+      if (state.activating) return;
+      enableMouseMode();
+    }, true);
+    document.addEventListener("keydown", (event) => {
+      if (!state.active) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        releaseSoftNav();
+        return;
+      }
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activateFocusedButton();
+      }
+    });
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", releaseSoftNav);
+    window.addEventListener("blur", releaseSoftNav);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installSoftNav);
+  } else {
+    installSoftNav();
+  }
+})();
+</script>
+
+
+<!-- BEGIN: controller-mouse-route-page-toggle-fix-v1 -->
+<script>
+(function () {
+  "use strict";
+
+  function normalizedPath() {
+    return (window.location.pathname || "/").toLowerCase().replace(/\/+$/, "") || "/";
+  }
+
+  function getRouteState() {
+    const path = normalizedPath();
+
+    if (path === "/" || path === "/ui/zh" || path === "/ui/zh-light") {
+      return { lang: "zh", dark: false };
+    }
+    if (path === "/ui/zh-dark") {
+      return { lang: "zh", dark: true };
+    }
+    if (path === "/ui/en" || path === "/ui/en-light") {
+      return { lang: "en", dark: false };
+    }
+    if (path === "/ui/en-dark") {
+      return { lang: "en", dark: true };
+    }
+
+    const docLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    const lang = docLang.startsWith("en") ? "en" : "zh";
+    const dark = document.documentElement.classList.contains("dark");
+    return { lang, dark };
+  }
+
+  function routeFor(lang, dark) {
+    if (lang === "en") return dark ? "/ui/en-dark" : "/ui/en";
+    return dark ? "/ui/zh-dark" : "/ui/zh";
+  }
+
+  async function persistRoutePreferences(lang, dark) {
+    try {
+      await fetch("/bindings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ui_language: lang,
+          ui_theme: dark ? "dark" : "light",
+        }),
+      });
+    } catch (_error) {
+      // Keep navigation working even if preference persistence fails.
+    }
+  }
+
+  function syncVisibleState() {
+    const state = getRouteState();
+    const html = document.documentElement;
+    const themeIcon = document.getElementById("theme-icon");
+    const themeLabel = document.getElementById("theme-label");
+    const langSpan = document.querySelector("#lang-toggle span");
+
+    html.classList.toggle("dark", state.dark);
+    html.classList.toggle("light", !state.dark);
+    html.setAttribute("lang", state.lang === "en" ? "en" : "zh-CN");
+
+    if (themeIcon) themeIcon.innerText = state.dark ? "dark_mode" : "light_mode";
+    if (themeLabel) {
+      themeLabel.innerText = state.lang === "zh"
+        ? (state.dark ? "夜晚" : "白天")
+        : (state.dark ? "Night" : "Day");
+    }
+    if (langSpan) langSpan.innerText = state.lang === "zh" ? "中文 | EN" : "EN | 中文";
+  }
+
+  window.toggleTheme = async function () {
+    const state = getRouteState();
+    await persistRoutePreferences(state.lang, !state.dark);
+    window.location.href = routeFor(state.lang, !state.dark);
+  };
+
+  window.toggleLanguage = async function () {
+    const state = getRouteState();
+    const nextLang = state.lang === "zh" ? "en" : "zh";
+    await persistRoutePreferences(nextLang, state.dark);
+    window.location.href = routeFor(nextLang, state.dark);
+  };
+
+  document.addEventListener("DOMContentLoaded", syncVisibleState);
+  syncVisibleState();
+})();
+</script>
+<!-- END: controller-mouse-route-page-toggle-fix-v1 -->
+</body></html>

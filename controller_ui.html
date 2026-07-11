@@ -1,0 +1,720 @@
+<!DOCTYPE html><html class="light dark" lang="zh-CN" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "inverse-surface": "#2b3234",
+            "tertiary": "#151819",
+            "on-tertiary-fixed-variant": "#454748",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#ebf2f4",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#161d1f",
+            "primary-fixed": "#d8e2ff",
+            "on-tertiary-container": "#919394",
+            "on-secondary-fixed-variant": "#004395",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#364669",
+            "surface-container-high": "#e2e9ec",
+            "primary-container": "#1a2b4c",
+            "surface-bright": "#f4fafd",
+            "secondary": "#0058be",
+            "surface-tint": "#4e5e82",
+            "tertiary-fixed": "#e1e3e4",
+            "surface-dim": "#d4dbdd",
+            "secondary-container": "#2170e4",
+            "surface": "#f4fafd",
+            "primary": "#031636",
+            "on-tertiary": "#ffffff",
+            "background": "#f4fafd",
+            "on-surface": "#161d1f",
+            "primary-fixed-dim": "#b6c6f0",
+            "on-secondary-fixed": "#001a42",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#292c2d",
+            "outline": "#75777f",
+            "outline-variant": "#c5c6cf",
+            "surface-container-low": "#eef5f7",
+            "inverse-primary": "#b6c6f0",
+            "surface-variant": "#dde4e6",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#dde4e6",
+            "on-tertiary-fixed": "#191c1d",
+            "surface-container": "#e8eff1",
+            "secondary-fixed-dim": "#adc6ff",
+            "on-secondary-container": "#fefcff",
+            "on-surface-variant": "#44474e",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#d8e2ff",
+            "on-primary-fixed": "#071b3b",
+            "on-primary-container": "#8293ba"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Geist"],
+            "display-xl-mobile": ["Geist"],
+            "body-lg": ["Inter"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-md": ["Geist"],
+            "body-md": ["Inter"],
+            "display-xl": ["Geist"]
+          }
+        }
+      }
+    }
+  }catch(_e){}</script></head><body class="h-screen flex flex-col bg-surface font-body-md overflow-hidden" style="width: 1280px; height: 960px; min-width: 1280px; min-height: 960px; max-width: 1280px; max-height: 960px; margin: 0px auto; position: relative; overflow: hidden; border: 1px solid rgb(221, 228, 230); box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;">
+<!-- BEGIN: CustomNativeTitlebar-->
+<div class="app-titlebar pywebview-drag-region bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-4 py-2 select-none" data-purpose="custom-titlebar">
+<div class="app-titlebar-left flex items-center gap-3">
+<div aria-hidden="true" class="app-titlebar-icon text-lg">ðŸŽ®</div>
+<div class="app-titlebar-title text-sm font-bold text-on-surface tracking-tight" data-i18n="app-title">æŽ§åˆ¶å™¨é¼ æ ‡</div>
+</div>
+<div aria-label="Window Controls" class="app-window-controls flex items-center gap-2">
+<button aria-label="Minimize" class="w-8 h-8 flex items-center justify-center hover:bg-surface-variant text-on-surface transition-colors rounded" onclick="windowAction('minimize')" title="æœ€å°åŒ–" type="button">âˆ’</button>
+<button aria-label="Close" class="w-8 h-8 flex items-center justify-center hover:bg-error hover:text-on-error text-on-surface transition-colors rounded" onclick="windowAction('close')" title="å…³é—­" type="button">Ã—</button>
+</div>
+</div>
+<!-- END: CustomNativeTitlebar -->
+<div class="flex-1 flex flex-col items-center justify-center p-6 overflow-hidden">
+<div class="max-w-4xl w-full flex flex-col items-center opacity-100 visible">
+<!-- BEGIN: TopIllustrationSection -->
+<div class="flex items-center justify-center space-x-8 mb-6" data-purpose="hardware-icons">
+<div class="flex items-center justify-center space-x-6 opacity-90 header-emoji-container" id="header-icon-container">
+<span aria-label="æŽ§åˆ¶å™¨" class="text-7xl transition-transform hover:scale-105" role="img">ðŸŽ®</span>
+<span aria-label="é¼ æ ‡" class="text-5xl transition-transform hover:scale-105" role="img">ðŸ–±ï¸</span>
+<span aria-label="éº¦å…‹é£Ž" class="text-5xl transition-transform hover:scale-105" role="img">ðŸŽ™ï¸</span>
+</div>
+</div>
+<div class="mb-6 flex items-center justify-center bg-surface-container-highest/40 backdrop-blur-sm border border-outline-variant/30 px-5 py-2 rounded-full shadow-sm" data-purpose="running-status">
+<div class="w-2.5 h-2.5 bg-emerald-500 rounded-full mr-2.5 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" id="status-dot"></div>
+<span class="text-on-surface-variant text-[11px] font-bold tracking-widest uppercase" data-i18n="status-running" id="status-text">è¿è¡Œä¸­</span>
+</div>
+<!-- END: TopIllustrationSection -->
+<!-- BEGIN: MainDashboardPanel -->
+<main class="bg-surface-container-lowest border border-outline-variant/50 rounded-[32px] p-8 w-full max-w-3xl shadow-xl flex flex-col gap-8 visible opacity-100" data-purpose="dashboard-container">
+<!-- Dashboard Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center mr-5 rounded-xl">
+<svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+<path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-xl font-bold text-on-surface tracking-tight" data-i18n="dashboard-title">æŽ§åˆ¶å™¨ä»ªè¡¨æ¿</h1>
+<p class="text-on-surface-variant text-xs font-medium mt-1" data-i18n="dashboard-subtitle">é€šè¿‡æŽ§åˆ¶å™¨æŽ§åˆ¶å…‰æ ‡ã€å¬å†™å’Œå›žè½¦é”®ã€‚</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<button class="flex items-center justify-center gap-2 w-24 h-8 bg-surface-container-low border border-outline-variant/30 rounded-lg hover:border-secondary transition-all shadow-sm active:scale-95 group" id="theme-toggle" onclick="toggleTheme()" title="åˆ‡æ¢ä¸»é¢˜">
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:rotate-12" id="theme-icon">☾</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant" id="theme-label">å¤œæ™š</span>
+</button>
+<button class="flex items-center justify-center w-24 h-8 bg-surface-container-low border border-outline-variant/30 rounded-lg hover:border-secondary transition-all shadow-sm active:scale-95" id="lang-toggle" onclick="toggleLanguage()">
+<span class="text-[10px] font-bold text-on-surface-variant tracking-wider">ä¸­æ–‡ | EN</span>
+</button>
+</div>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Left Column: Shortcuts -->
+<section data-purpose="shortcuts-column">
+<div class="flex flex-col mb-4">
+<div class="flex items-center">
+<div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center mr-3">
+<svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="shortcuts-title">æŽ§åˆ¶å™¨å¿«æ·é”®</h2>
+</div>
+<p class="text-[10px] text-on-tertiary-container mt-1 ml-10" data-i18n="shortcuts-subtitle">å®žç”¨åŠŸèƒ½ä¸Žå¿«é€Ÿåˆ‡æ¢ã€‚</p>
+</div>
+<div class="space-y-2.5">
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/30 rounded-xl p-2.5 px-3.5">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-white border border-outline-variant rounded-md text-[9px] font-bold text-on-surface-variant">LB</span>
+<span class="text-outline font-bold text-base">+</span>
+<span class="px-1.5 py-0.5 bg-white border border-outline-variant rounded-md text-[9px] font-bold text-on-surface-variant w-7 text-center">A</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-sens-up">æé«˜çµæ•åº¦</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/30 rounded-xl p-2.5 px-3.5">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-white border border-outline-variant rounded-md text-[9px] font-bold text-on-surface-variant">LB</span>
+<span class="text-outline font-bold text-base">+</span>
+<span class="px-1.5 py-0.5 bg-white border border-outline-variant rounded-md text-[9px] font-bold text-on-surface-variant w-7 text-center">B</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-sens-down">é™ä½Žçµæ•åº¦</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/30 rounded-xl p-2.5 px-3.5">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-white border border-outline-variant rounded-md text-[9px] font-bold text-on-surface-variant w-9 text-center">LT</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-dictate">æŒ‰ä½å¬å†™</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/30 rounded-xl p-2.5 px-3.5">
+<div class="grid grid-cols-[100px_1fr] items-center w-full">
+<div class="flex items-center space-x-2">
+<span class="px-1.5 py-0.5 bg-white border border-outline-variant rounded-md text-[9px] font-bold text-on-surface-variant w-9 text-center">RT</span>
+</div>
+<div class="flex items-center">
+<div class="w-7 flex justify-center text-outline/50">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+<span class="text-on-surface text-xs font-semibold" data-i18n="shortcut-enter">å›žè½¦é”®</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Movement & Precision -->
+<section class="flex flex-col gap-6" data-purpose="movement-column">
+<div>
+<div class="flex flex-col mb-4">
+<div class="flex items-center">
+<div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center mr-3">
+<div class="w-3.5 h-3.5 border-2 border-secondary rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-secondary rounded-full"></div>
+</div>
+</div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="movement-title">ç§»åŠ¨</h2>
+</div>
+<p class="text-[10px] text-on-tertiary-container mt-1 ml-10" data-i18n="movement-subtitle">å¹³æ»‘ç§»åŠ¨å…‰æ ‡ã€‚</p>
+</div>
+<div class="flex items-center bg-surface-container border border-outline-variant/30 rounded-2xl p-4">
+<div class="w-10 h-10 bg-surface-variant/40 rounded-xl flex items-center justify-center mr-4">
+<svg class="w-6 h-6 text-on-surface-variant/60" fill="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="8" r="4"></circle>
+<path d="M12 12c-3.3 0-6 2.7-6 6v2h12v-2c0-3.3-2.7-6-6-6z" opacity="0.4"></path>
+</svg>
+</div>
+<div>
+<p class="font-bold text-xs text-on-surface" data-i18n="movement-input">å·¦æ‘‡æ†</p>
+<p class="text-[9px] text-on-surface-variant/70 uppercase tracking-wider font-bold mt-0.5" data-i18n="movement-action">= ç§»åŠ¨å…‰æ ‡</p>
+</div>
+</div>
+</div>
+<div>
+<div class="flex flex-col mb-4">
+<div class="flex items-center">
+<div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center mr-3">
+<div class="w-3.5 h-3.5 border-2 border-secondary rounded-full flex items-center justify-center">
+<div class="w-1 h-1 bg-secondary rounded-full"></div>
+</div>
+</div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="precision-title">ç²¾åº¦</h2>
+</div>
+<p class="text-[10px] text-on-tertiary-container mt-1 ml-10" data-i18n="precision-subtitle">ç²¾å‡†å¾®è°ƒæŽ§åˆ¶ã€‚</p>
+</div>
+<div class="flex items-center bg-surface-container border border-outline-variant/30 rounded-2xl p-4">
+<div class="w-10 h-10 bg-surface-variant/40 rounded-xl flex items-center justify-center mr-4">
+<svg class="w-6 h-6 text-on-surface-variant/60" fill="currentColor" viewBox="0 0 24 24"><path d="M10 3v7H3v4h7v7h4v-7h7v-4h-7V3h-4z"></path></svg>
+</div>
+<div>
+<p class="font-bold text-xs text-on-surface" data-i18n="precision-input">æ–¹å‘é”®</p>
+<p class="text-[9px] text-on-surface-variant/70 uppercase tracking-wider font-bold mt-0.5" data-i18n="precision-action">= ç²¾ç¡®è°ƒæ•´</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Speech Mode Panel -->
+<section class="bg-surface-container border border-outline-variant/30 rounded-2xl p-4" data-purpose="speech-mode-panel">
+<div class="flex items-center justify-between gap-4 mb-3">
+<div class="flex items-center">
+<div class="w-9 h-9 bg-secondary/10 rounded-xl flex items-center justify-center mr-4">
+<span aria-hidden="true" class="text-lg">ðŸŽ™ï¸</span>
+</div>
+<div>
+<h2 class="text-sm font-bold text-on-surface tracking-tight" data-i18n="speech-mode-title">è¯­éŸ³æ¨¡å¼</h2>
+<p class="text-[10px] text-on-surface-variant font-medium mt-0.5" id="speech-mode-current">è¯­éŸ³æ¨¡å¼ä¸å¯ç”¨</p>
+</div>
+</div>
+<div class="text-[9px] text-on-surface-variant/70 text-right font-bold tracking-tight">
+              æŒ‰ä½ LT = è¯­éŸ³ â€¢ RT = å›žè½¦
+            </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2" data-purpose="speech-mode-buttons">
+<button class="speech-mode-btn bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:border-secondary transition-all shadow-sm" data-speech-mode="zh-small">ä¸­æ–‡è¾“å…¥ (ç¨³)</button>
+<button class="speech-mode-btn bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:border-secondary transition-all shadow-sm" data-speech-mode="en-small">è‹±æ–‡è¾“å…¥ (ç¨³)</button>
+<button class="speech-mode-btn bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:border-secondary transition-all shadow-sm" data-speech-mode="zh-tiny">ä¸­æ–‡è¾“å…¥ (å¿«)</button>
+<button class="speech-mode-btn bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-3 py-2 text-[10px] font-bold text-on-surface-variant hover:border-secondary transition-all shadow-sm" data-speech-mode="auto-tiny">è‡ªåŠ¨è¯†åˆ« (å¿«)</button>
+</div>
+<p class="text-[9px] text-on-tertiary-container mt-2 ml-1" data-i18n="speech-mode-tip">é€‰æ‹©ä¸€ä¸ªæ¨¡å¼ã€‚Small æ¨¡åž‹æ•ˆæžœæ›´å¥½ï¼›Tiny æ¨¡åž‹é€Ÿåº¦æ›´å¿«ã€‚</p>
+</section>
+<!-- Action Buttons -->
+<div class="grid grid-cols-3 gap-4" data-purpose="action-buttons">
+<button class="flex items-center justify-center space-x-3 bg-primary/5 border border-primary/10 p-4 rounded-xl hover:bg-primary/10 transition-all group shadow-sm active:scale-95" onclick="send('start')">
+<div class="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-secondary border-b-[6px] border-b-transparent ml-1 group-hover:scale-110 transition-transform"></div>
+<span class="text-sm font-bold text-on-surface tracking-tight" data-i18n="btn-start">å¼€å§‹</span>
+</button>
+<button class="flex items-center justify-center space-x-3 bg-primary/5 border border-primary/10 p-4 rounded-xl hover:bg-primary/10 transition-all group shadow-sm active:scale-95" onclick="send('pause')">
+<div class="flex space-x-1">
+<div class="w-1.5 h-3.5 bg-on-tertiary-container rounded-full"></div>
+<div class="w-1.5 h-3.5 bg-on-tertiary-container rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-on-surface tracking-tight" data-i18n="btn-pause">æš‚åœ</span>
+</button>
+<button class="flex items-center justify-center space-x-3 bg-error/5 border border-error/10 p-4 rounded-xl hover:bg-error/10 transition-all group shadow-sm active:scale-95" onclick="send('stop')">
+<div class="w-3 h-3 bg-error rounded-sm group-hover:scale-110 transition-transform"></div>
+<span class="text-sm font-bold text-on-surface tracking-tight" data-i18n="btn-stop">åœæ­¢</span>
+</button>
+</div>
+</main>
+</div>
+</div>
+<script>
+    let currentLang = 'zh';
+    const translations = {
+      'en': {
+        'app-title': 'Joy Flow',
+        'status-running': 'Running',
+        'status-paused': 'Paused',
+        'status-stopped': 'Stopped',
+        'dashboard-title': 'Controller Dashboard',
+        'dashboard-subtitle': 'Control cursor, dictation, and Enter from your controller.',
+        'shortcuts-title': 'Controller Shortcuts',
+        'shortcuts-subtitle': 'Useful actions and quick toggles.',
+        'shortcut-sens-up': 'Sensitivity Up',
+        'shortcut-sens-down': 'Sensitivity Down',
+        'shortcut-dictate': 'Hold to Dictate',
+        'shortcut-enter': 'Enter Key',
+        'movement-title': 'Movement',
+        'movement-subtitle': 'Move the cursor smoothly.',
+        'movement-input': 'Left Stick',
+        'movement-action': '= Move Cursor',
+        'precision-title': 'Precision',
+        'precision-subtitle': 'Fine control for accuracy.',
+        'precision-input': 'D-pad',
+        'precision-action': '= Fine Adjust',
+        'speech-mode-title': 'Speech Mode',
+        'speech-mode-unavailable': 'Speech mode unavailable',
+        'speech-mode-tip': 'Choose a mode. Small is better; Tiny is faster.',
+        'btn-start': 'Start',
+        'btn-pause': 'Pause',
+        'btn-stop': 'Stop',
+        'lang-current': 'Current: ',
+        'theme-day': 'Day',
+        'theme-night': 'Night'
+      },
+      'zh': {
+        'app-title': 'æŽ§åˆ¶å™¨é¼ æ ‡',
+        'status-running': 'è¿è¡Œä¸­',
+        'status-paused': 'å·²æš‚åœ',
+        'status-stopped': 'å·²åœæ­¢',
+        'dashboard-title': 'æŽ§åˆ¶å™¨ä»ªè¡¨æ¿',
+        'dashboard-subtitle': 'é€šè¿‡æŽ§åˆ¶å™¨æŽ§åˆ¶å…‰æ ‡ã€å¬å†™å’Œå›žè½¦é”®ã€‚',
+        'shortcuts-title': 'æŽ§åˆ¶å™¨å¿«æ·é”®',
+        'shortcuts-subtitle': 'å®žç”¨åŠŸèƒ½ä¸Žå¿«é€Ÿåˆ‡æ¢ã€‚',
+        'shortcut-sens-up': 'æé«˜çµæ•åº¦',
+        'shortcut-sens-down': 'é™ä½Žçµæ•åº¦',
+        'shortcut-dictate': 'æŒ‰ä½å¬å†™',
+        'shortcut-enter': 'å›žè½¦é”®',
+        'movement-title': 'ç§»åŠ¨',
+        'movement-subtitle': 'å¹³æ»‘ç§»åŠ¨å…‰æ ‡ã€‚',
+        'movement-input': 'å·¦æ‘‡æ†',
+        'movement-action': '= ç§»åŠ¨å…‰æ ‡',
+        'precision-title': 'ç²¾åº¦',
+        'precision-subtitle': 'ç²¾å‡†å¾®è°ƒæŽ§åˆ¶ã€‚',
+        'precision-input': 'æ–¹å‘é”®',
+        'precision-action': '= ç²¾ç¡®è°ƒæ•´',
+        'speech-mode-title': 'è¯­éŸ³æ¨¡å¼',
+        'speech-mode-unavailable': 'è¯­éŸ³æ¨¡å¼ä¸å¯ç”¨',
+        'speech-mode-tip': 'é€‰æ‹©ä¸€ä¸ªæ¨¡å¼ã€‚Small æ¨¡åž‹æ•ˆæžœæ›´å¥½ï¼›Tiny æ¨¡åž‹é€Ÿåº¦æ›´å¿«ã€‚',
+        'btn-start': 'å¼€å§‹',
+        'btn-pause': 'æš‚åœ',
+        'btn-stop': 'åœæ­¢',
+        'lang-current': 'å½“å‰ï¼š',
+        'theme-day': 'ç™½å¤©',
+        'theme-night': 'å¤œæ™š'
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      applyTranslations();
+    }
+
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerText = translations[currentLang][key];
+        }
+      });
+      updateThemeLabel();
+      refreshSpeechMode();
+      
+      const langSpan = document.querySelector('#lang-toggle span');
+      langSpan.innerText = currentLang === 'zh' ? 'ä¸­æ–‡ | EN' : 'EN | ä¸­æ–‡';
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.innerText = '☀';
+      } else {
+        html.classList.add('dark');
+        icon.innerText = '☾';
+      }
+      updateThemeLabel();
+    }
+
+    function updateThemeLabel() {
+      const label = document.getElementById('theme-label');
+      const isDark = document.documentElement.classList.contains('dark');
+      label.innerText = isDark ? translations[currentLang]['theme-night'] : translations[currentLang]['theme-day'];
+    }
+
+    async function windowAction(action) {
+      try {
+        if (window.pywebview && window.pywebview.api && window.pywebview.api[action]) {
+          await window.pywebview.api[action]();
+        }
+      } catch (e) { console.log(e); }
+    }
+
+    async function send(action) {
+      try {
+        await fetch(`/${action}`, { method: "POST" });
+      } catch (e) { console.log(e); }
+
+      const statusLabel = document.getElementById('status-text');
+      const statusDot = document.getElementById('status-dot');
+      const iconContainer = document.getElementById('header-icon-container');
+      
+      if (statusLabel && statusDot) {
+        statusDot.className = "w-2.5 h-2.5 rounded-full mr-2.5 animate-pulse transition-all duration-300";
+        if (action === "start") {
+          statusLabel.innerText = translations[currentLang]['status-running'];
+          statusDot.classList.add("bg-emerald-500", "shadow-[0_0_8px_rgba(16,185,129,0.5)]");
+          if (iconContainer) iconContainer.classList.remove('is-paused');
+        } else if (action === "pause") {
+          statusLabel.innerText = translations[currentLang]['status-paused'];
+          statusDot.classList.add("bg-orange-400", "shadow-[0_0_8px_rgba(251,146,60,0.6)]");
+          if (iconContainer) iconContainer.classList.add('is-paused');
+        } else if (action === "stop") {
+          statusLabel.innerText = translations[currentLang]['status-stopped'];
+          statusDot.classList.add("bg-red-500", "shadow-[0_0_8px_rgba(239,68,68,0.6)]");
+          if (iconContainer) iconContainer.classList.remove('is-paused');
+        }
+      }
+    }
+
+    async function refreshSpeechMode() {
+      try {
+        const response = await fetch("/speech-mode");
+        const data = await response.json();
+        const current = data.current || "custom";
+        const profile = (data.profiles || []).find((item) => item.id === current);
+        const label = profile ? profile.label : `Custom`;
+        const currentEl = document.getElementById("speech-mode-current");
+        if (currentEl) {
+          const prefix = translations[currentLang]['lang-current'];
+          currentEl.innerText = `${prefix}${label}`;
+        }
+      } catch (e) {
+        const currentEl = document.getElementById("speech-mode-current");
+        if (currentEl) currentEl.innerText = translations[currentLang]['speech-mode-unavailable'];
+      }
+    }
+
+    async function setSpeechMode(mode) {
+      try {
+        await fetch("/set-speech-mode", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mode }),
+        });
+        await refreshSpeechMode();
+      } catch (e) { console.log(e); }
+    }
+
+    document.querySelectorAll("[data-speech-mode]").forEach(btn => {
+      btn.onclick = () => setSpeechMode(btn.getAttribute("data-speech-mode"));
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('theme-icon').innerText = '☾';
+      }
+      updateThemeLabel();
+      applyTranslations();
+    });
+  </script>
+
+
+
+<script data-purpose="controller-mouse-backend-speech-wiring-v20260703">
+(function () {
+  "use strict";
+
+  const MODE_BY_LABEL = new Map([
+    ["stable chinese input", "zh-small"],
+    ["stable english input", "en-small"],
+    ["lightning cn input", "zh-tiny"],
+    ["auto lightning input", "auto-tiny"],
+    ["ä¸­æ–‡è¾“å…¥ (ç¨³)", "zh-small"],
+    ["ä¸­æ–‡è¾“å…¥ï¼ˆç¨³ï¼‰", "zh-small"],
+    ["ç¨³å®šä¸­æ–‡è¾“å…¥", "zh-small"],
+    ["ç¨³å®šä¸­æ–‡", "zh-small"],
+    ["è‹±æ–‡è¾“å…¥ (ç¨³)", "en-small"],
+    ["è‹±æ–‡è¾“å…¥ï¼ˆç¨³ï¼‰", "en-small"],
+    ["ç¨³å®šè‹±æ–‡è¾“å…¥", "en-small"],
+    ["ä¸­æ–‡è¾“å…¥ (å¿«)", "zh-tiny"],
+    ["ä¸­æ–‡è¾“å…¥ï¼ˆå¿«ï¼‰", "zh-tiny"],
+    ["é—ªç”µä¸­æ–‡è¾“å…¥", "zh-tiny"],
+    ["è‡ªåŠ¨è¯†åˆ« (å¿«)", "auto-tiny"],
+    ["è‡ªåŠ¨è¯†åˆ«ï¼ˆå¿«ï¼‰", "auto-tiny"],
+    ["è‡ªåŠ¨é—ªç”µè¾“å…¥", "auto-tiny"]
+  ]);
+
+  const PROFILE_LABELS = {
+    "zh-small": { en: "Stable Chinese Input", zh: "ä¸­æ–‡è¾“å…¥ (ç¨³)", model: "small", language: "zh" },
+    "en-small": { en: "Stable English Input", zh: "è‹±æ–‡è¾“å…¥ (ç¨³)", model: "small", language: "en" },
+    "zh-tiny": { en: "Lightning CN Input", zh: "ä¸­æ–‡è¾“å…¥ (å¿«)", model: "tiny", language: "zh" },
+    "auto-tiny": { en: "Auto Lightning Input", zh: "è‡ªåŠ¨è¯†åˆ« (å¿«)", model: "tiny", language: null }
+  };
+
+  function pageLang() {
+    const htmlLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    if (window.__controllerMouseLang) return window.__controllerMouseLang;
+    return htmlLang.includes("zh") ? "zh" : "en";
+  }
+
+  function normalizeLabel(text) {
+    return String(text || "").replace(/\s+/g, " ").trim().toLowerCase();
+  }
+
+  function inferMode(button, index) {
+    const existing = button.getAttribute("data-speech-mode");
+    if (existing && PROFILE_LABELS[existing]) return existing;
+
+    const direct = MODE_BY_LABEL.get(normalizeLabel(button.innerText));
+    if (direct) return direct;
+
+    return ["zh-small", "en-small", "zh-tiny", "auto-tiny"][index] || "zh-small";
+  }
+
+  function speechButtons() {
+    return Array.from(document.querySelectorAll("[data-purpose='speech-mode-buttons'] button, .speech-mode-btn, [data-speech-mode]"));
+  }
+
+  function markSpeechMode(current) {
+    speechButtons().forEach((button) => {
+      const mode = button.getAttribute("data-speech-mode");
+      const active = mode === current;
+      button.setAttribute("data-active", active ? "true" : "false");
+      button.classList.toggle("ring-2", active);
+      button.classList.toggle("ring-secondary", active);
+      button.classList.toggle("ring-primary", active);
+      button.classList.toggle("border-secondary", active);
+      button.classList.toggle("border-primary", active);
+    });
+  }
+
+  async function postJSON(url, body) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body || {})
+    });
+    if (!response.ok) throw new Error(`${url} failed: ${response.status}`);
+    const text = await response.text();
+    try { return JSON.parse(text); } catch (_) { return { ok: true, text }; }
+  }
+
+  window.refreshSpeechMode = async function refreshSpeechMode() {
+    const currentEl = document.getElementById("speech-mode-current");
+    try {
+      const response = await fetch("/speech-mode", { cache: "no-store" });
+      if (!response.ok) throw new Error(`/speech-mode failed: ${response.status}`);
+      const data = await response.json();
+      const current = data.current || data.mode || "custom";
+      const lang = pageLang();
+      const local = PROFILE_LABELS[current] ? PROFILE_LABELS[current][lang] : null;
+      const serverProfile = (data.profiles || []).find((item) => item.id === current);
+      const label = local || (serverProfile && serverProfile.label) || current;
+      const prefix = lang === "zh" ? "å½“å‰ï¼š" : "Current: ";
+      if (currentEl) currentEl.innerText = `${prefix}${label}`;
+      markSpeechMode(current);
+      return data;
+    } catch (e) {
+      if (currentEl) currentEl.innerText = pageLang() === "zh" ? "è¯­éŸ³æ¨¡å¼ä¸å¯ç”¨" : "Speech mode unavailable";
+      console.log("Speech mode refresh failed:", e);
+      return null;
+    }
+  };
+
+  window.setSpeechMode = async function setSpeechMode(mode) {
+    const button = document.querySelector(`[data-speech-mode='${mode}']`);
+    try {
+      if (button) button.disabled = true;
+      const data = await postJSON("/set-speech-mode", { mode });
+      markSpeechMode(mode);
+      await window.refreshSpeechMode();
+      return data;
+    } catch (e) {
+      console.log("Set speech mode failed:", e);
+      const currentEl = document.getElementById("speech-mode-current");
+      if (currentEl) currentEl.innerText = pageLang() === "zh" ? "è¯­éŸ³æ¨¡å¼åˆ‡æ¢å¤±è´¥" : "Speech mode switch failed";
+      return null;
+    } finally {
+      if (button) button.disabled = false;
+    }
+  };
+
+  window.send = window.send || async function send(action) {
+    try { await fetch(`/${action}`, { method: "POST" }); } catch (e) { console.log(e); }
+    const lang = pageLang();
+    const labels = lang === "zh"
+      ? { start: "è¿è¡Œä¸­", pause: "å·²æš‚åœ", stop: "å·²åœæ­¢" }
+      : { start: "Running", pause: "Paused", stop: "Stopped" };
+    const statusLabel = document.getElementById("status-text");
+    if (statusLabel && labels[action]) statusLabel.innerText = labels[action];
+  };
+
+  window.windowAction = window.windowAction || async function windowAction(action) {
+    try {
+      if (window.pywebview && window.pywebview.api && window.pywebview.api[action]) {
+        await window.pywebview.api[action]();
+      }
+    } catch (e) { console.log(e); }
+  };
+
+  window.toggleTheme = window.toggleTheme || function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+    const icon = document.getElementById("theme-icon");
+    if (icon) icon.innerText = document.documentElement.classList.contains("dark") ? "☾" : "☀";
+  };
+
+  window.toggleLanguage = window.toggleLanguage || function toggleLanguage() {
+    window.__controllerMouseLang = pageLang() === "zh" ? "en" : "zh";
+    window.refreshSpeechMode();
+  };
+
+  function installSpeechWiring() {
+    const buttons = speechButtons();
+    buttons.forEach((button, index) => {
+      const mode = inferMode(button, index);
+      button.setAttribute("data-speech-mode", mode);
+      button.type = "button";
+      button.onclick = function () { window.setSpeechMode(mode); };
+    });
+    window.refreshSpeechMode();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installSpeechWiring);
+  } else {
+    installSpeechWiring();
+  }
+})();
+</script>
+
+
+<!-- BEGIN: controller-mouse-route-page-toggle-fix-v1 -->
+<script>
+(function () {
+  "use strict";
+
+  function normalizedPath() {
+    return (window.location.pathname || "/").toLowerCase().replace(/\/+$/, "") || "/";
+  }
+
+  function getRouteState() {
+    const path = normalizedPath();
+
+    if (path === "/" || path === "/ui/zh" || path === "/ui/zh-light") {
+      return { lang: "zh", dark: false };
+    }
+    if (path === "/ui/zh-dark") {
+      return { lang: "zh", dark: true };
+    }
+    if (path === "/ui/en" || path === "/ui/en-light") {
+      return { lang: "en", dark: false };
+    }
+    if (path === "/ui/en-dark") {
+      return { lang: "en", dark: true };
+    }
+
+    const docLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+    const lang = docLang.startsWith("en") ? "en" : "zh";
+    const dark = document.documentElement.classList.contains("dark");
+    return { lang, dark };
+  }
+
+  function routeFor(lang, dark) {
+    if (lang === "en") return dark ? "/ui/en-dark" : "/ui/en";
+    return dark ? "/ui/zh-dark" : "/ui/zh";
+  }
+
+  function syncVisibleState() {
+    const state = getRouteState();
+    const html = document.documentElement;
+    const themeIcon = document.getElementById("theme-icon");
+    const themeLabel = document.getElementById("theme-label");
+    const langSpan = document.querySelector("#lang-toggle span");
+
+    html.classList.toggle("dark", state.dark);
+    html.classList.toggle("light", !state.dark);
+    html.setAttribute("lang", state.lang === "en" ? "en" : "zh-CN");
+
+    if (themeIcon) themeIcon.innerText = state.dark ? "☾" : "☀";
+    if (themeLabel) {
+      themeLabel.innerText = state.lang === "zh"
+        ? (state.dark ? "å¤œæ™š" : "ç™½å¤©")
+        : (state.dark ? "Night" : "Day");
+    }
+    if (langSpan) langSpan.innerText = state.lang === "zh" ? "ä¸­æ–‡ | EN" : "EN | ä¸­æ–‡";
+  }
+
+  window.toggleTheme = function () {
+    const state = getRouteState();
+    window.location.href = routeFor(state.lang, !state.dark);
+  };
+
+  window.toggleLanguage = function () {
+    const state = getRouteState();
+    const nextLang = state.lang === "zh" ? "en" : "zh";
+    window.location.href = routeFor(nextLang, state.dark);
+  };
+
+  document.addEventListener("DOMContentLoaded", syncVisibleState);
+  syncVisibleState();
+})();
+</script>
+<!-- END: controller-mouse-route-page-toggle-fix-v1 -->
+</body></html>

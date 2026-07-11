@@ -1,0 +1,54 @@
+{
+  "deadzone": 0.02,
+  "sensitivity_stages": [
+    30,
+    45,
+    60,
+    80,
+    105
+  ],
+  "stage_index": 0,
+  "accel_power": 1.0,
+  "tick_rate": 240,
+  "scroll_amount": 12,
+  "scroll_repeat_delay": 0.025,
+  "fine_move_pixels": 2,
+  "fine_move_repeat_delay": 0.035,
+  "click_cooldown": 0.12,
+  "pause_cooldown": 0.35,
+  "sensitivity_cycle_cooldown": 0.35,
+  "enter_cooldown": 0.2,
+  "trigger_threshold": 0.65,
+  "whisper_model": "small",
+  "whisper_language": "zh",
+  "whisper_initial_prompt": null,
+  "dictation_min_seconds": 0.45,
+  "dictation_release_tail_seconds": 0.0,
+  "lt_axis_candidates": [
+    "4:+"
+  ],
+  "rt_axis_candidates": [
+    "5:+"
+  ],
+  "speech_profile": "zh-small",
+  "ui_language": "zh",
+  "ui_theme": "light",
+  "custom_bindings": {
+    "move_cursor": "Left Stick",
+    "fine_adjust": "D-pad",
+    "dictation": "LT Hold",
+    "enter": "RT",
+    "sensitivity_up": "LB + A",
+    "sensitivity_down": "LB + B",
+    "backspace": "Y"
+  },
+  "control_bindings": {
+    "move_cursor": "left_stick",
+    "fine_adjust": "dpad",
+    "dictation": "lt",
+    "enter": "rt",
+    "sensitivity_up": "lb+a",
+    "sensitivity_down": "lb+b",
+    "backspace": "y"
+  }
+}

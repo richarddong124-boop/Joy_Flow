@@ -1,0 +1,13 @@
+pygame
+pyautogui
+flask
+flask-cors
+pywebview
+pystray
+pillow
+uiautomation
+comtypes
+openai-whisper
+sounddevice
+numpy
+pyperclip
